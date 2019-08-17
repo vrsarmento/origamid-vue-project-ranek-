@@ -1,8 +1,8 @@
 <template>
 	<div class="pagination">
 		<ul v-if="pagesTotal > 1">
-			<router-link :to="{query: query(1)}"> < </router-link>
-			
+			<router-link :to="{query: query(1)}">{{firstPageIcon}}</router-link>
+
 			<li v-for="page in pages" :key="page">
 				<router-link :to="{query: query(page)}">{{page}}</router-link>
 			</li>
@@ -23,6 +23,11 @@ export default {
 		productsTotal: {
 			type: Number,
 			default: 1
+		}
+	},
+	data() {
+		return {
+			firstPageIcon: "<",
 		}
 	},
 	computed: {

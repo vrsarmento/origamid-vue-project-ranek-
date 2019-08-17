@@ -1,20 +1,25 @@
 <template>
 	<section class="products-container">
-		<div v-if="products && products.length" class="products">
-			<div v-for="(product, index) in products" :key="index" class="product">
-				<router-link to="/">
-					<img v-if="product.photos" :src="product.photos[0].src" :alt="product.photos[0].title">
-					<p class="price">{{product.price}}</p>
-					<h2 class="title">{{product.name}}</h2>
-					<p>{{product.description}}</p>
-				</router-link>
+		<transition mode="out-in">
+			<div v-if="products && products.length" class="products" key="products">
+				<div v-for="(product, index) in products" :key="index" class="product">
+					<router-link to="/">
+						<img v-if="product.photos" :src="product.photos[0].src" :alt="product.photos[0].title">
+						<p class="price">{{product.price}}</p>
+						<h2 class="title">{{product.name}}</h2>
+						<p>{{product.description}}</p>
+					</router-link>
+				</div>
+				<ProductsPagination :productsTotal="productsTotal" :productsPerPage="productsPerPage"/>
 			</div>
-			<ProductsPagination :productsTotal="productsTotal" :productsPerPage="productsPerPage"/>
-		</div>
 
-		<div v-else-if="products && products.length === 0" class="no-results">
-			<p>Busca sem resultados. Tente buscar outro termo.</p>
-		</div>
+			<div v-else-if="products && products.length === 0" class="no-results" key="no-results">
+				<p>Busca sem resultados. Tente buscar outro termo.</p>
+			</div>
+
+			<PageLoading v-else key="loading"/>
+
+		</transition>
 	</section>
 </template>
 
@@ -27,7 +32,7 @@ export default {
 	data() {
 		return {
 			products: null,
-			productsPerPage: 3,
+			productsPerPage: 9,
 			productsTotal: 0,
 		}
 	},
@@ -42,11 +47,14 @@ export default {
 	},
 	methods: {
 		getProducts() {
-			api.get(this.url)
-				.then(r => {
-					this.products = r.data;
-					this.productsTotal = Number(r.headers['x-total-count']);
-				});
+			this.products = null;
+			window.setTimeout(() => {
+				api.get(this.url)
+					.then(r => {
+						this.products = r.data;
+						this.productsTotal = Number(r.headers['x-total-count']);
+					});
+			}, 1500)
 		}
 	},
 	watch: {
