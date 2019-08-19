@@ -10,6 +10,17 @@
 			"number": "30",
 			"state": "MG",
 			"city": "Cataguases"
+		},
+		{
+			"id": "paulo@gmail.com",
+			"email": "paulo@gmail.com",
+			"name": "Paulo Dias",
+			"password": "123",
+			"address": "Rua Ali Perto",
+			"zipcode": "12345678",
+			"number": "30",
+			"state": "MG",
+			"city": "Cataguases"
 		}
 	],
 	"product": [
