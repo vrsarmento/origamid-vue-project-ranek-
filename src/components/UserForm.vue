@@ -10,7 +10,7 @@
 		<input type="text" id="zipcode" name="zipcode" v-model="zipcode" @keyup="fillZipCode">
 		<label for="name">Logradouro</label>
 		<input type="text" id="address" name="address" v-model="address">
-		<label for="name">Número</label>
+		<label for="name">Número / Compl.</label>
 		<input type="text" id="number" name="number" v-model="number">
 		<label for="name">Bairro</label>
 		<input type="text" id="district" name="district" v-model="district">
@@ -57,7 +57,7 @@ export default {
 <style scoped>
 form {
 	display: grid;
-	grid-template-columns: 80px 1fr;
+	grid-template-columns: 90px 1fr;
 	align-items: center;
 }
 
