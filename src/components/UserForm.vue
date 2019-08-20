@@ -7,13 +7,15 @@
 		<label for="name">Senha</label>
 		<input type="password" id="password" name="password" v-model="password">
 		<label for="name">CEP</label>
-		<input type="text" id="zipcode" name="zipcode" v-model="zipcode">
-		<label for="name">Rua</label>
+		<input type="text" id="zipcode" name="zipcode" v-model="zipcode" @keyup="fillZipCode">
+		<label for="name">Logradouro</label>
 		<input type="text" id="address" name="address" v-model="address">
 		<label for="name">Número</label>
 		<input type="text" id="number" name="number" v-model="number">
+		<label for="name">Bairro</label>
+		<input type="text" id="district" name="district" v-model="district">
 		<label for="name">Cidade</label>
-		<input type="text" id="nacityme" name="city" v-model="city">
+		<input type="text" id="city" name="city" v-model="city">
 		<label for="name">Estado</label>
 		<input type="text" id="state" name="state" v-model="state">
 		
@@ -25,15 +27,29 @@
 
 <script>
 import { mapFields } from "@/helpers.js";
+import { getZipCode } from "@/services.js";
 
 export default {
 	name: "UserForm",
 	computed: {
 		...mapFields({
-			fields: ["name", "email", "password", "zipcode", "address", "number", "city", "state"],
+			fields: ["name", "email", "password", "zipcode", "address", "number", "district", "city", "state"],
 			base: "user",
 			mutation: "UPDATE_USER"
 		}),
+	},
+	methods: {
+		fillZipCode() {
+			const zipcode = this.zipcode.replace(/\D/g, "");
+			if(zipcode.length === 8) {
+				getZipCode(zipcode).then(r => {
+					this.address = r.data.logradouro;
+					this.district = r.data.bairro;
+					this.city = r.data.localidade;
+					this.state = r.data.uf;
+				})
+			}
+		}
 	}
 }
 </script>
