@@ -38,7 +38,7 @@ export default {
 				api.delete(`/product/${id}`).then(() => {
 					this.getUserProducts();
 				}).catch(error => {
-					console.log(error.response);
+					//console.log(error.response);
 				});
 		}
 	},
