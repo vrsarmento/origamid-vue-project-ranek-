@@ -63,7 +63,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .pagination {
 	grid-column: 1 / -1;
 }
