@@ -12,7 +12,7 @@
 				<p class="price">{{product.price | currencyStyle}}</p>
 				<p class="description">{{product.description}}</p>
 				<button v-if="product.sold === 'false'" class="btn">Comprar</button>
-				<button v-else class="btn" disabled>Prouto Vendido</button>
+				<button v-else class="btn" disabled>Produto Vendido</button>
 			</div>
 		</div>
 

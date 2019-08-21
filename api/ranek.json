@@ -3,7 +3,7 @@
     {
       "id": "victor@gmail.com",
       "email": "victor@gmail.com",
-      "name": "Victor R. Sarmento",
+      "name": "Victor Rocha Sarmento",
       "password": "123",
       "zipcode": "36773290",
       "address": "Rua Doutor Walter Gomes Rosa",
@@ -15,11 +15,11 @@
     {
       "id": "paulo@gmail.com",
       "email": "paulo@gmail.com",
-      "name": "Paulo Dias",
+      "name": "Paulo Dias Sarmento",
       "password": "123",
-      "address": "Rua Ali Perto",
-      "zipcode": "12345678",
-      "number": "30",
+      "zipcode": "36773290",
+      "address": "Rua Doutor Walter Gomes Rosa",
+      "number": "30 / 307",
       "district": "Colinas",
       "state": "MG",
       "city": "Cataguases"
@@ -1106,6 +1106,14 @@
       "photos": null,
       "user_id": "victor@gmail.com",
       "id": "N_gqgLv"
+    },
+    {
+      "name": "Drone",
+      "price": "3200",
+      "description": "Esse é um drone",
+      "photos": null,
+      "user_id": "paulo@gmail.com",
+      "id": "oCQYUVX"
     }
   ]
 }

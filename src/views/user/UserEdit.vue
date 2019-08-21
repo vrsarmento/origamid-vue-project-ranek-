@@ -19,7 +19,7 @@ export default {
 	methods: {
 		updateUser() {
 			api.put(`/user/${this.$store.state.user.id}`, this.$store.state.user).then(() => {
-				this.$store.dispatch("getUser");
+				this.$store.dispatch("getUser", this.$store.state.user.id);
 			}).catch(error => {
 				//console.log(error.response);
 			});
