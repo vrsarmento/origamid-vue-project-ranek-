@@ -8,6 +8,7 @@
 			<li v-for="(product, index) in user_products" :key="index">
 				<ProductItem :product="product">
 					<p>{{product.description}}</p>
+					<button class="delete" @click="deleteProduct(product.id)">Excluir</button>
 				</ProductItem>
 			</li>
 		</transition-group>
@@ -18,6 +19,7 @@
 import ProductAdd from "@/components/ProductAdd.vue";
 import ProductItem from "@/components/ProductItem.vue";
 import { mapState, mapActions } from "vuex";
+import { api } from "@/services.js";
 
 export default {
 	name: 'UserProducts',
@@ -30,6 +32,15 @@ export default {
 	},
 	methods: {
 		...mapActions(["getUserProducts"]),
+		deleteProduct(id) {
+			const confirm = window.confirm("Deseja realmente excluir este produto?");
+			if(confirm)
+				api.delete(`/product/${id}`).then(() => {
+					this.getUserProducts();
+				}).catch(error => {
+					console.log(error.response);
+				});
+		}
 	},
 	watch: {
 		login() {
@@ -58,5 +69,18 @@ h2 {
 .list-enter-active,
 .list-leave-active {
 	transition: all .3s;
+}
+
+.delete {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: url("../../assets/remove.svg") no-repeat center center;
+	width: 24px;
+	height: 24px;
+	text-indent: -140px;
+	overflow: hidden;
+	cursor: pointer;
+	border: none;
 }
 </style>
