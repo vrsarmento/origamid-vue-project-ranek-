@@ -47,6 +47,18 @@
       "district": "Colinas",
       "state": "MG",
       "city": "Cataguases"
+    },
+    {
+      "id": "mirian@gmail.com",
+      "email": "mirian@gmail.com",
+      "name": "Mirian Bottan",
+      "password": "123",
+      "zipcode": "22050020",
+      "address": "Travessa Angrense",
+      "number": "1230",
+      "district": "Copacabana",
+      "state": "RJ",
+      "city": "Rio de Janeiro"
     }
   ],
   "product": [
@@ -1172,6 +1184,28 @@
         "state": "MG"
       },
       "id": 2
+    },
+    {
+      "buyer_id": "mirian@gmail.com",
+      "seller_id": "victor@gmail.com",
+      "product": {
+        "id": "notebook",
+        "name": "Notebook",
+        "user_id": "victor@gmail.com",
+        "price": "4999",
+        "sold": "false",
+        "description": "Esse é um novo notebook.",
+        "photos": null
+      },
+      "address": {
+        "zipcode": "22050020",
+        "address": "Travessa Angrense",
+        "number": "1230",
+        "district": "Copacabana",
+        "city": "Rio de Janeiro",
+        "state": "RJ"
+      },
+      "id": 3
     }
   ]
 }

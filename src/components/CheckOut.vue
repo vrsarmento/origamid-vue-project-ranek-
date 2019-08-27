@@ -44,8 +44,8 @@ export default {
 		},
 		async createUser() {
 			try {
-				await this.$store.dispatch("createUser", this.$store.state.user);
-				await this.$store.dispatch("getUser", this.$store.state.user.email);
+				await this.$store.dispatch("createUser", this.user);
+				await this.$store.dispatch("getUser", this.user.email);
 				await this.createTransaction();
 			} catch(error) {
 				console.log(error);
