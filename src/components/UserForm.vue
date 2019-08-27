@@ -1,11 +1,14 @@
 <template>
 	<form>
-		<label for="name">Nome</label>
-		<input type="text" id="name" name="name" v-model="name">
-		<label for="name">E-mail</label>
-		<input type="email" id="email" name="email" v-model="email">
-		<label for="name">Senha</label>
-		<input type="password" id="password" name="password" v-model="password">
+		<template v-if="showLoginData">
+			<label for="name">Nome</label>
+			<input type="text" id="name" name="name" v-model="name">
+			<label for="name">E-mail</label>
+			<input type="email" id="email" name="email" v-model="email">
+			<label for="name">Senha</label>
+			<input type="password" id="password" name="password" v-model="password">
+		</template>
+
 		<label for="name">CEP</label>
 		<input type="text" id="zipcode" name="zipcode" v-model="zipcode" @keyup="fillZipCode">
 		<label for="name">Logradouro</label>
@@ -37,6 +40,9 @@ export default {
 			base: "user",
 			mutation: "UPDATE_USER"
 		}),
+		showLoginData() {
+			return !this.$store.state.login || this.$route.name === "user-edit";
+		}
 	},
 	methods: {
 		fillZipCode() {

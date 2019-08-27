@@ -11,7 +11,11 @@
 				<h1>{{product.name}}</h1>
 				<p class="price">{{product.price | currencyStyle}}</p>
 				<p class="description">{{product.description}}</p>
-				<button v-if="product.sold === 'false'" class="btn">Comprar</button>
+
+				<transition v-if="product.sold === 'false'" mode="out-in">
+					<button class="btn" v-if="!finalize" @click="finalize = true">Comprar</button>
+					<CheckOut v-else :product="product" />
+				</transition>
 				<button v-else class="btn" disabled>Produto Vendido</button>
 			</div>
 		</div>
@@ -22,13 +26,18 @@
 
 <script>
 import { api } from "@/services.js";
+import CheckOut from "@/components/CheckOut.vue";
 
 export default {
 	name: "Product",
 	props: ["id"],
+	components: {
+		CheckOut
+	},
 	data() {
 		return {
-			product: null
+			product: null,
+			finalize: false,
 		}
 	},
 	methods: {
