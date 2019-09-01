@@ -31,7 +31,7 @@ export default {
 	},
 	methods: {
 		getPurchases() {
-			api.get(`/transaction?buyer_id=${this.user.id}`).then(r => {
+			api.get(`/transaction?type=buyer_id`).then(r => {
 				this.purchases = r.data;
 			})
 		}

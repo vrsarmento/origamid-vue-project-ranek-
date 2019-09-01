@@ -39,7 +39,7 @@ export default {
 	},
 	methods: {
 		getSales() {
-			api.get(`/transaction?seller_id=${this.user.id}`).then(r => {
+			api.get(`/transaction?type=seller_id`).then(r => {
 				this.sales = r.data;
 			})
 		}
