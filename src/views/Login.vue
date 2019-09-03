@@ -35,7 +35,7 @@ export default {
 	},
 	methods: {
 		handleLogin() {
-			this.$store.dispatch("logInUser", this.login).then(() => {
+			this.$store.dispatch("loginUser", this.login).then(() => {
 				this.$store.dispatch("getUser");
 				this.$router.push({name: "user"});
 			});

@@ -49,7 +49,7 @@ export default new Vuex.Store({
       context.commit("UPDATE_USER", { id: payload.email })
       return api.post("/user", context.state.user );
     },
-    logInUser(context, payload) {
+    loginUser(context, payload) {
       return api.login({
         username: payload.email,
         password: payload.password,
@@ -57,7 +57,7 @@ export default new Vuex.Store({
         window.localStorage.rnktkn = `Bearer ${response.data.token}`; 
       })
     },
-    logOutUser(context) {
+    logoutUser(context) {
       context.commit("UPDATE_USER", {
         "id": "",
         "email": "",
@@ -70,6 +70,7 @@ export default new Vuex.Store({
         "state": "",
         "city": ""
       });
+      window.localStorage.removeItem("rnktkn");
       context.commit("UPDATE_LOGIN", false);
     },
     getUserProducts(context) {

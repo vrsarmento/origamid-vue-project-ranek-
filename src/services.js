@@ -34,7 +34,7 @@ export const api = {
 		return axios.post('http://localhost/origamid/wordpress_rest/wordpress/wp-json/jwt-auth/v1/token', body);
 	},
 	validateToken() {
-		return axios.post('http://localhost/origamid/wordpress_rest/wordpress/wp-json/jwt-auth/v1/token/validate');
+		return axiosInstance.post('http://localhost/origamid/wordpress_rest/wordpress/wp-json/jwt-auth/v1/token/validate');
 	}
 };
 

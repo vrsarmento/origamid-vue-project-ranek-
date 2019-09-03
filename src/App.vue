@@ -15,11 +15,21 @@
 <script>
 import TheHeader from "@/components/TheHeader.vue";
 import TheFooter from "@/components/TheFooter.vue";
+import { api } from "@/services.js";
 
 export default {
   components: {
     TheHeader,
     TheFooter
+  },
+  created() {
+    if(window.localStorage.rnktkn) {
+      api.validateToken().then(() => {
+        this.$store.dispatch("getUser");
+      }).catch(() => {
+        window.localStorage.removeItem("rnktkn");
+      });
+    }
   }
 }
 </script>
