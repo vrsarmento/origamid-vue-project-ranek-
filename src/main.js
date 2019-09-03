@@ -3,10 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import PageLoading from '@/components/PageLoading.vue';
+import ErrorNotification from '@/components/ErrorNotification.vue';
 
 Vue.config.productionTip = false;
 
 Vue.component("PageLoading", PageLoading);
+Vue.component("ErrorNotification", ErrorNotification);
 
 Vue.filter("currencyStyle", value => {
   value = Number(value);

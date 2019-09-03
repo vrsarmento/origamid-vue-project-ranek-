@@ -1,6 +1,7 @@
 <template>
 	<section>
 		<h2>Endereço de Envio</h2>
+		<ErrorNotification :errors="errors"/>
 		<UserForm>
 			<button class="btn" @click.prevent="checkOut">Finalizar Compra</button>
 		</UserForm>
@@ -17,6 +18,11 @@ export default {
 	props: ["product"],
 	components: {
 		UserForm
+	},
+	data() {
+		return {
+			errors: []
+		}
 	},
 	computed: {
 		...mapState(["user"]),
@@ -40,6 +46,8 @@ export default {
 		createTransaction() {
 			return api.post("transaction", this.purchase).then(() => {
 				this.$router.push({name: "user-purchases"});
+			}).catch(error => {
+				this.errors.push(error.response.data.message);
 			});
 		},
 		async createUser() {
@@ -49,10 +57,11 @@ export default {
 				await this.$store.dispatch("getUser");
 				await this.createTransaction();
 			} catch(error) {
-				console.log(error);
+				this.errors.push(error.response.data.message);
 			}
 		},
 		checkOut() {
+			this.errors = [];
 			if(this.$store.state.login) {
 				this.createTransaction();
 			} else {

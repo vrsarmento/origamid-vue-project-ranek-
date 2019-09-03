@@ -7,10 +7,12 @@
 			<label for="password">Senha</label>
 			<input type="password" name="password" id="password" v-model="login.password">
 			<button class="btn" @click.prevent="handleLogin">Logar</button>
+
+			<ErrorNotification :errors="errors"/>
 		</form>
 
 		<p class="lost">
-			<a href="/" target="_blank">Esqueceu a senha? Clique aqui.</a>
+			<a href="http://localhost/origamid/wordpress_rest/wordpress/wp-login.php?action=lostpassword" target="_blank">Esqueceu a senha? Clique aqui.</a>
 		</p>
 
 		<LoginCreate />
@@ -27,7 +29,8 @@ export default {
 			login: {
 				email: "",
 				password: ""
-			}
+			},
+			errors: []
 		}
 	},
 	components: {
@@ -35,9 +38,12 @@ export default {
 	},
 	methods: {
 		handleLogin() {
+			this.errors = [];
 			this.$store.dispatch("loginUser", this.login).then(() => {
 				this.$store.dispatch("getUser");
 				this.$router.push({name: "user"});
+			}).catch(error => {
+				this.errors.push(error.response.data.message);
 			});
 		}
 	}

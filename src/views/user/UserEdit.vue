@@ -4,6 +4,7 @@
 		<UserForm>
 			<button @click.prevent="updateUser" class="btn">Salvar</button>
 		</UserForm>
+		<ErrorNotification :errors="errors"/>
 	</section>
 </template>
 
@@ -16,12 +17,19 @@ export default {
 	components: {
 		UserForm
 	},
+	data() {
+		return {
+			errors: []
+		}
+	},
 	methods: {
 		updateUser() {
+			this.errors = [];
 			api.put(`/user`, this.$store.state.user).then(() => {
 				this.$store.dispatch("getUser", this.$store.state.user.id);
 			}).catch(error => {
-				//console.log(error.response);
+				this.errors.push(error.response.data.message);
+				this.$store.dispatch("getUser", this.$store.state.user.id);
 			});
 		}
 	}
