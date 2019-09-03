@@ -48,13 +48,11 @@ export default {
 	methods: {
 		getProducts() {
 			this.products = null;
-			window.setTimeout(() => {
-				api.get(this.url)
-					.then(r => {
-						this.products = r.data;
-						this.productsTotal = Number(r.headers['x-total-count']);
-					});
-			}, 1500)
+			api.get(this.url)
+				.then(r => {
+					this.products = r.data;
+					this.productsTotal = Number(r.headers['x-total-count']);
+				});
 		}
 	},
 	watch: {

@@ -16,7 +16,7 @@
 					<button class="btn" v-if="!finalize" @click="finalize = true">Comprar</button>
 					<CheckOut v-else :product="product" />
 				</transition>
-				<button v-else class="btn" disabled>Produto Vendido</button>
+				<button v-else class="btn btn-disabled" disabled>Produto Vendido</button>
 			</div>
 		</div>
 
@@ -64,11 +64,20 @@ export default {
 	margin: 0 auto;
 }
 
+.photos {
+	grid-row: 1 / 3;
+}
+
 .price {
 	color: #e80;
 	font-weight: bold;
 	font-size: 1.5rem;
 	margin-bottom: 40px;
+}
+
+.info {
+	position: sticky;
+	top: 20px;
 }
 
 .description {
@@ -78,5 +87,11 @@ export default {
 .btn {
 	margin-top: 60px;
 	width: 200px;
+}
+
+img {
+	margin-bottom: 30px;
+	box-shadow: 0 4px 8px rgba(30,60,90,0.2);
+	border-radius: 4px;
 }
 </style>
