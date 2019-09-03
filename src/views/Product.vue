@@ -94,4 +94,18 @@ img {
 	box-shadow: 0 4px 8px rgba(30,60,90,0.2);
 	border-radius: 4px;
 }
+
+@media screen and (max-width: 500px) {
+	.product {
+		grid-template-columns: 1fr;
+	}
+
+	.photos {
+		grid-row: 2;
+	}
+
+	.info {
+		position: initial;
+	}
+}
 </style>
