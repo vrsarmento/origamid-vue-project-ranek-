@@ -11,7 +11,7 @@ import UserSales from './views/user/UserSales.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -34,6 +34,9 @@ export default new Router({
     {
       path: '/usuario',
       component: User,
+      meta: {
+        login: true,
+      },
       children: [
         {
           path: "",
@@ -61,4 +64,18 @@ export default new Router({
   scrollBehavior() {
     return window.scrollTo({top: 0, behavior: "smooth"});
   }
-})
+});
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.login)) {
+    if(!window.localStorage.rnktkn) {
+      next("/login");
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;
