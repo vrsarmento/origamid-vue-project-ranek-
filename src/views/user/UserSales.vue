@@ -16,6 +16,7 @@
 				</div>
 			</div>
 		</div>
+		<PageLoading v-else/>
 	</section>
 </template>
 

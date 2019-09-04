@@ -8,6 +8,7 @@
 				</ProductItem>
 			</div>
 		</div>
+		<PageLoading v-else/>
 	</section>
 </template>
 
