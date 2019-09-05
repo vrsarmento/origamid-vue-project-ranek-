@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import NotFound from './views/NotFound.vue'
 import Product from './views/Product.vue'
 import Login from './views/Login.vue'
 import User from './views/user/User.vue'
@@ -15,6 +16,10 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '*',
+      component: NotFound
+    },
     {
       path: '/',
       name: 'home',

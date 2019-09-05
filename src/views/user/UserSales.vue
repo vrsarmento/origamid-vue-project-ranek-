@@ -2,7 +2,8 @@
 	<section>
 		<h2>Vendas</h2>
 		<div v-if="sales">
-			<div class="products-wrapper" v-for="(sale, index) in sales" :key="index">
+			<p v-if="sales.length == 0">Você ainda não vendeu nenhum produto.</p>
+			<div else class="products-wrapper" v-for="(sale, index) in sales" :key="index">
 				<ProductItem v-if="sale.product" :product="sale.product">
 					<p class="seller"><span>Comprador: </span>{{sale.buyer_id}}</p>
 				</ProductItem>

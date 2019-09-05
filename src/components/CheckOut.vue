@@ -60,13 +60,18 @@ export default {
 				this.errors.push(error.response.data.message);
 			}
 		},
-		checkOut() {
+		async checkOut(event) {
 			this.errors = [];
+			const button = event.currentTarget;
+			button.value = "Finalizando...";
+			button.setAttribute("disabled", "");
 			if(this.$store.state.login) {
-				this.createTransaction();
+				await this.createTransaction();
 			} else {
-				this.createUser();
+				await this.createUser();
 			}
+			button.value = "Finalizar Compra";
+			button.removeAttribute("disabled");
 		}
 	}
 };

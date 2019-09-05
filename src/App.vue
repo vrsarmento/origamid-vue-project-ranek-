@@ -85,7 +85,9 @@ img {
 }
 
 .btn-disabled,
-.btn-disabled:hover {
+.btn-disabled:hover,
+.btn:disabled, 
+.btn:disabled:hover {
   background: #bbc;
   transform: scale(1);
 }

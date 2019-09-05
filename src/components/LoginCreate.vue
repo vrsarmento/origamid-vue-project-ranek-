@@ -5,7 +5,7 @@
 		<transition mode="out-in">
 			<button v-if="!create" @click="create = true" class="btn">Criar Conta</button>
 			<UserForm v-else>
-				<button class="btn btn-form" @click.prevent="createUser">Criar</button>
+				<button class="btn btn-form" @click.prevent="createUser">Criar Usuário</button>
 			</UserForm>
 		</transition>
 
@@ -27,14 +27,19 @@ export default {
 		UserForm
 	},
 	methods: {
-		async createUser() {
+		async createUser(event) {
 			this.errors = [];
+			const button = event.currentTarget;
+			button.value = "Criando usuário...";
+			button.setAttribute("disabled", "");
 			try {
 				await this.$store.dispatch("createUser", this.$store.state.user);
 				await this.$store.dispatch("loginUser", this.$store.state.user);
 				await this.$store.dispatch("getUser");
 				this.$router.push({ name: "user" });
 			} catch(error) {
+				button.value = "Criar Usuário";
+				button.removeAttribute("disabled");
 				this.errors.push(error.response.data.message);
 			}
 		}

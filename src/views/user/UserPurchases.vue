@@ -2,7 +2,8 @@
 	<section>
 		<h2>Compras</h2>
 		<div v-if="purchases">
-			<div class="products-wrapper" v-for="(purchase, index) in purchases" :key="index">
+			<p v-if="purchases.length == 0">Você ainda não vendeu nenhum produto.</p>
+			<div v-else class="products-wrapper" v-for="(purchase, index) in purchases" :key="index">
 				<ProductItem v-if="purchase.product" :product="purchase.product">
 					<p class="seller"><span>Vendedor: </span>{{purchase.seller_id}}</p>
 				</ProductItem>
