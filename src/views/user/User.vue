@@ -34,6 +34,9 @@ export default {
 			this.$store.dispatch("logoutUser");
 			this.$router.push({name: "login"});
 		}
+	},
+	created() {
+		document.title = "Ranek - Página do Usuário";
 	}
 }
 </script>

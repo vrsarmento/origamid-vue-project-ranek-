@@ -1,5 +1,8 @@
 <template>
-	<h1>Página não encontrada</h1>
+  <div>
+    <h1>Página não encontrada</h1>
+    <router-link class="home" to="/">Voltar para Home</router-link>
+  </div>
 </template>
 
 <script>
@@ -11,8 +14,12 @@ export default {
 <style scoped>
 h1 {
   color: #87f;
-  margin-top: 40px;
-  font-size: 2rem;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.home {
+  display: block;
   text-align: center;
 }
 </style>

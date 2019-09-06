@@ -45,6 +45,7 @@ export default {
 			api.get(`/product/${this.id}`)
 				.then(r => {
 					this.product = r.data;
+					document.title = `Ranek - Produto: ${this.product.name}`;
 				})
 		}
 	},
