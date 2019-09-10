@@ -1,4 +1,10 @@
-# 09-ranek
+Project created as part of the online course Vue.js Completo from Origamid (http://www.origamid.com)
+
+Branches: 
+	json-api: Data source from a JSON file
+	wordpress-api: Data source from an REST API using Wordpress 
+
+# ranek
 
 ## Project setup
 ```
