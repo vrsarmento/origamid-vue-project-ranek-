@@ -1,6 +1,6 @@
 # ranek
 
-Project created as part of the online course Vue.js Completo from Origamid (http://www.origamid.com)
+Project created as part of the online course Vue.js Complete from Origamid (http://www.origamid.com)
 
 **Branches:**
  - *json-api:* Data source from a JSON file 
